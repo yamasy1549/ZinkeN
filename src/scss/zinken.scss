@@ -108,6 +108,11 @@ figcaption.fig {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+
+  .title {
+    margin: 0 0 40px;
+  }
 
   &:after {
     content: '';
