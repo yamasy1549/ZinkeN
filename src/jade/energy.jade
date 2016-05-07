@@ -1,0 +1,139 @@
+doctype html
+
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    title energy
+    link(rel="stylesheet" href="./styles/zinken.css")
+
+  body
+    .page
+      section
+        h2 目的
+        p 自然エネルギー発電のうち、太陽電池の特性を測定し、日射強度による出力の違いを確かめる。
+
+      section
+        h2 原理
+        p 太陽電池は半導体の光起電力効果を利用して光による発電を可能とするものである。
+
+      section
+        h2 実験方法
+        h3 準備
+        figure
+          image(src="./images/circuit.png")
+          figcaption.fig 太陽電池出力測定回路
+        p 図 1 に示す回路を作成した。可変抵抗は 2 kΩ 程度まで可変できるものを用い、可変抵抗とは直列にヒューズを挿入している。また、太陽光発電パネル本体はガラス製で破損が起きやすいとともに、パネルから出ている配線も断線しやすいので、太陽光発電パネルの扱いには特に注意した。
+        p 使用した器具の一覧を表 1 に示す。
+        table
+          caption.table 使用器具一覧
+          tr
+            th 名称
+            th 製造元
+            th 型番
+            th シリアル番号
+            th 規格
+          tr
+            td ディジタルマルチメータ
+            td TEXIO
+            td DL-2040
+            td 13010369
+            td 16VA 50/60Hz
+          tr
+            td 太陽光発電パネル
+            td -
+            td SY-M50W
+            td(style="text-align:right;") -
+            td 12V 50W
+          tr
+            td LED投光器
+            td -
+            td -
+            td 201310
+            td AC100V 50/60Hz 50W
+          tr
+            td ソーラーパワーメータ
+            td -
+            td SPM-SD
+            td(style="text-align:right;") Q829898
+            td 6.5mA
+
+    .page
+        h3 実験手順
+        ol
+          li 太陽光発電パネルと LED ライトとの距離を調整し、ソーラーパワーメータを用いてパネル表面の図 2 に示す 9 点で照射強度 (W/m\(^2\)) を測定した。
+          li 可変抵抗を変化させ、抵抗が増加させるとパネルの出力電圧が増え、出力電流が減少することを確認した。
+          li 抵抗値を変えていき、太陽光発電パネルの出力電圧・出力電流の関係を測定した。
+          li 実験手順 3 で得られた値を掛けあわせて、出力電力を測定した。
+          li 照射強度を変化させて合計 3 回同様の測定を行った。これを実験 1、実験 2、実験 3 とする。
+        figure
+          img(src="./images/panel.png" style="width:50%")
+          figcaption.fig 太陽光発電パネルの照射強度の測定ポイント
+
+    .page
+      section
+        h2 実験結果
+        p 実験手順 1 で得られた照射強度を表 2 に示す。また、実験手順 3、4 で得られた結果を図 3、図 4 に示す。
+        table
+          caption.table ポイントごとの照射強度 (単位:\(W/m^2\))
+          tr
+            th ポイント
+            th 実験1
+            th 実験2
+            th 実験3
+          tr
+            td 1
+            td 2.8
+            td 3.6
+            td 3.0
+          tr
+            td 2
+            td 4.2
+            td 3.9
+            td 2.1
+          tr
+            td 3
+            td 3.4
+            td 3.6
+            td 3.8
+          tr
+            td 4
+            td 7.3
+            td 4.2
+            td 28.0
+          tr
+            td 5
+            td 9.5
+            td 4.7
+            td 8.8
+          tr
+            td 6
+            td 5.8
+            td 4.1
+            td 26.4
+          tr
+            td 7
+            td 4.2
+            td 3.7
+            td 7.4
+          tr
+            td 8
+            td 5.2
+            td 4.2
+            td 5.3
+          tr
+            td 9
+            td 3.6
+            td 3.7
+            td 6.5
+
+      section
+        h2 考察
+        p 実験結果より、照射強度が局所的に高くても効率の良い発電はできないと考えられる。効率の良い発電を考えるならば、光源の光をパネル全面に受けられるようにパネルを配置しなければならない。また、このパネルを電源とするならば、400 Ω 程度の負荷を用いると電力効率がよい。
+        p 複数の太陽光発電パネルを直列に接続すると高い電圧を取り出すことができるが、絶縁を確保しておかないと感電などの自己が発生する恐れがある。
+        p 複数の太陽光発電パネルを並列に接続すると比較的大きな電流が発生するので、発熱・発火事故に注意する必要がある。
+
+    script(src="https://code.jquery.com/jquery-2.2.3.min.js")
+    script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
+    script(src="./scripts/mathjax.js")
+
