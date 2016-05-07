@@ -1,0 +1,162 @@
+/* headings */
+
+@mixin h1 {
+  font-size: 32px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+@mixin h2 {
+  font-size: 24px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+@mixin h3 {
+  font-size: 18px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+@mixin h4 {
+  font-size: 16px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+@mixin h5 {
+  font-size: 13px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+@mixin h6 {
+  font-size: 10px;
+  color: $black;
+  margin: 24px 0 14px;
+  line-height: 1.5;
+}
+
+
+/* paragraph */
+
+@mixin p {
+  color: $black;
+  line-height: $text-line-height;
+  letter-spacing: $text-letter-spacing;
+  margin: 10px 0;
+
+  @media (max-width: 900px) {
+    line-height: $text-line-height-sm;
+  }
+}
+
+
+/* blockquote */
+
+@mixin blockquote {
+  color: $gray;
+  font-size: 80%;
+  font-style: italic;
+  border-left: 4px solid $light-gray;
+  padding-left: 20px;
+  line-height: $text-line-height;
+  letter-spacing: $text-letter-spacing;
+
+  @media (max-width: 900px) {
+    line-height: $text-line-height-sm;
+  }
+}
+
+
+/* strong */
+
+@mixin strong {
+  font-weight: bold;
+  margin: 0 0.1rem;
+}
+
+
+/* keyboard */
+
+@mixin kbd {
+  background-color: lighten($light-gray, 15%);
+  color: $lol-pink;
+  padding: 0.1rem 0.4rem;
+  margin: 0 0.4rem;
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+
+/* hr */
+
+@mixin hr {
+  border: 0;
+  background-color: $light-gray;
+  height: 2px;
+}
+
+
+/* small */
+
+@mixin small {
+  font-size: 12px;
+  color: $black;
+  line-height: $text-line-height;
+  letter-spacing: $text-letter-spacing;
+
+  @media (max-width: 900px) {
+    line-height: $text-line-height-sm;
+  }
+}
+
+
+/* list */
+
+@mixin list {
+  padding-left: 40px;
+  line-height: $text-line-height;
+  letter-spacing: $text-letter-spacing;
+
+  @media (max-width: 900px) {
+    line-height: $text-line-height-sm;
+  }
+}
+
+
+/* image */
+
+@mixin img {
+  width: 100%;
+  display: block;
+}
+
+
+/* table */
+
+@mixin table {
+  color: $black;
+  border-collapse: collapse;
+  border-spacing: 0;
+  line-height: $text-line-height;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    line-height: $text-line-height-sm;
+  }
+
+  th,
+  td {
+    text-align: left;
+    border: 1px solid $light-gray;
+    padding: 0.8rem 2rem;
+  }
+
+  th { background-color: lighten($light-gray, 15%); }
+}

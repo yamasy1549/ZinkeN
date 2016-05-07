@@ -1,0 +1,26 @@
+@import 'sanitize';
+@import 'variables';
+@import 'mixins';
+@import 'atoms';
+
+body {
+  counter-reset: chapter;
+}
+
+h2 {
+  counter-increment: chapter;
+
+  &:before {
+    // TODO: 間隔など調整の必要あり
+    content: counter(chapter);
+    margin-right: 8px;
+  }
+}
+
+.page {
+  // ユーザ側で可変にしたい
+  width: 1000px;
+  box-shadow: 5px 5px 20px $light-gray;
+  margin: 50px auto;
+  padding: 80px 50px;
+}
