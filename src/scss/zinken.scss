@@ -82,16 +82,16 @@ figcaption.fig {
 
 .page {
   width: 210mm;
-  min-height: 296mm;
+  height: 296mm;
   box-shadow: 5px 5px 20px $light-gray;
   margin: 50px auto;
-  padding: 80px 50px;
+  padding: 50px 50px;
   page-break-after: always;
   position: relative;
 
   &:after {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     right: 50%;
     text-indent: 0.5em;
     counter-increment: page;
@@ -119,5 +119,5 @@ figcaption.fig {
 
 @page {
   size: A4;
-  margin: 80px 50px;
+  margin: 50px 50px;
 }
