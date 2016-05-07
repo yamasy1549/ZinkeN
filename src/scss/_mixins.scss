@@ -122,8 +122,7 @@
 
   th,
   td {
-    // TODO: 数字は右寄せとかをJSで
-    text-align: left;
+    text-align: center;
     border: 1px solid $black;
     padding: 0.4em 1em;
   }
