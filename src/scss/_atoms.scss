@@ -10,10 +10,6 @@
   font-family: $primary-fonts;
   line-height: 1;
   position: relative;
-
-  @media (max-width: 900px) {
-    font-size: 14px;
-  }
 }
 
 h1 { @include h1; }
@@ -26,10 +22,6 @@ h6 { @include h6; }
 p { @include p; }
 blockquote { @include blockquote; }
 strong { @include strong; }
-kbd,
-code {
-  @include kbd;
-}
 hr { @include hr; }
 small { @include small; }
 ul,
@@ -39,8 +31,15 @@ ol {
 img { @include img; }
 
 table { @include table; }
+pre { @include pre; }
+figure { @include figure; }
 
-pre,
-code {
-  font-family: $code-font;
+pre {
+  @include code;
+  @include pre;
+}
+code { @include code; }
+kbd {
+  @include code;
+  @include kbd;
 }

@@ -5,19 +5,19 @@ html(lang="ja")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     title いるやんはほげ
-    // script(src="https://code.jquery.com/jquery-2.2.3.min.js")
     link(rel="stylesheet" href="./styles/jinken.css")
 
   body
     .page
       section
         h2 実験内容
-        p 実験に使用した挿入ソートのソースコードをソースコード 1 からソースコード 2 に示す。random_case.c を実行するとソート対象の要素がランダムな順に並んだケース、descending_case.c を実行するとソート対象の要素が降順に並んだケースの時間を計測することができる。なお、ソースコード中の N はソートを行う要素の数を表し、それぞれ 10000,30000,100000 の場合について測定を行った。また、プログラムは bash の for ループ構文を用いて 10 回実行 (11 回実行し、入力に対する割り込みがあると思われる 1 回目の実行の結果を除く) し、その結果を平均した。
+        p 実験に使用した挿入ソートのソースコードをソースコード 1 からソースコード 2 に示す。random_case.c を実行するとソート対象の要素がランダムな順に並んだケース、descending_case.c を実行するとソート対象の要素が降順に並んだケースの時間を計測することができる。なお、ソースコード中の N はソートを行う要素の数を表し、それぞれ 10000, 30000, 100000 の場合について測定を行った。また、プログラムは bash の for ループ構文を用いて 10 回実行 (11 回実行し、入力に対する割り込みがあると思われる 1 回目の実行の結果を除く) し、その結果を平均した。
 
       section
         h2 実験結果
         p N の値に対する挿入ソートの所要時間を表 1 及び図 1 に示す。
         table
+          caption.table N に対するソートの所要時間 (単位:秒)
           tr
             th N
             th random_case.c
@@ -37,92 +37,102 @@ html(lang="ja")
 
       section
         h2 考察
-        p 図 1 から分かるように、挿入ソートの所要時間は N2 に比例する。また、要素がランダムに配置されているケースよりも降順に配置されているケースの方が、若干ではあるが高速にソートできることがわかった。
+        p 図 1 から分かるように、挿入ソートの所要時間は\(N^2\)に比例する。また、要素がランダムに配置されているケースよりも降順に配置されているケースの方が、若干ではあるが高速にソートできることがわかった。
 
-        pre
-          :code
-            void sort(int length, int* a){
-              int i, j, k, tmp;
-              for(i=1; i<length; ++i){
-                for(j=0; j<i; ++j){
-                  if(a[j] > a[i]){
-                    tmp = a[i];
-                    for(k=i; j<k; --k){
-                      a[k] = a[k-1];
+        figure
+          figcaption.code insert_sort.c
+          pre
+            :code
+              void sort(int length, int* a){
+                int i, j, k, tmp;
+                for(i=1; i<length; ++i){
+                  for(j=0; j<i; ++j){
+                    if(a[j] > a[i]){
+                      tmp = a[i];
+                      for(k=i; j<k; --k){
+                        a[k] = a[k-1];
+                      }
+                      a[j] = tmp;
+                      break;
                     }
-                    a[j] = tmp;
-                    break;
                   }
                 }
               }
-            }
 
-        pre
-          :code
-            #include <stdio.h>
-            #include <stdlib.h>
-            #include <time.h>
-            #include"insert_sort.c"
-            #define N 30000
+        figure
+          figcaption.code random_case.c
+          pre
+            :code
+              #include <stdio.h>
+              #include <stdlib.h>
+              #include <time.h>
+              #include"insert_sort.c"
+              #define N 30000
 
-            extern void sort(int, int*);
+              extern void sort(int, int*);
 
-            int main(void){
-              int i, a[N];
-              time_t seed;
-              clock_t start , end;
+              int main(void){
+                int i, a[N];
+                time_t seed;
+                clock_t start , end;
 
-              time(&seed);
-              srand(seed);
+                time(&seed);
+                srand(seed);
 
-              for(i=0;i<N;++i){
-                a[i] = rand ()%N;
-              }
-
-              start=clock ();
-              sort(N,a);
-              end=clock ();
-
-              for(i=0;i<N-1;++i){
-                if(a[i]>a[i+1]){
-                  printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
-                  exit (1);
+                for(i=0;i<N;++i){
+                  a[i] = rand ()%N;
                 }
-              }
 
-              printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
-              return 0;
-            }
+                start=clock ();
+                sort(N,a);
+                end=clock ();
 
-        pre
-          :code
-            #include <stdio.h>
-            #include <stdlib.h>
-            #include <time.h>
-            #include"insert_sort.c"
-            #define N 100000
-
-            extern void sort(int, int*);
-
-            int main(void){
-              int i, a[N];
-              clock_t start , end;
-
-              for(i=0;i<N;++i){
-                a[i] = N-i-1;
-              }
-
-              start=clock ();
-              sort(N,a);
-              end=clock ();
-
-              for(i=0;i<N-1;++i){
-                if(a[i]>a[i+1]){
-                  printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
-                  exit (1);
+                for(i=0;i<N-1;++i){
+                  if(a[i]>a[i+1]){
+                    printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
+                    exit (1);
+                  }
                 }
+
+                printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
+                return 0;
               }
 
-              printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
-              return 0;
-            }
+        figure
+          figcaption.code descending_case.c
+          pre
+            :code
+              #include <stdio.h>
+              #include <stdlib.h>
+              #include <time.h>
+              #include"insert_sort.c"
+              #define N 100000
+
+              extern void sort(int, int*);
+
+              int main(void){
+                int i, a[N];
+                clock_t start , end;
+
+                for(i=0;i<N;++i){
+                  a[i] = N-i-1;
+                }
+
+                start=clock ();
+                sort(N,a);
+                end=clock ();
+
+                for(i=0;i<N-1;++i){
+                  if(a[i]>a[i+1]){
+                    printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
+                    exit (1);
+                  }
+                }
+
+                printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
+                return 0;
+              }
+
+    script(src="https://code.jquery.com/jquery-2.2.3.min.js")
+    script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
+    script(src="./scripts/mathjax.js")

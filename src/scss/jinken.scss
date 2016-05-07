@@ -4,7 +4,7 @@
 @import 'atoms';
 
 body {
-  counter-reset: chapter;
+  counter-reset: chapter code table fig page;
 }
 
 h2 {
@@ -13,14 +13,69 @@ h2 {
   &:before {
     // TODO: 間隔など調整の必要あり
     content: counter(chapter);
-    margin-right: 8px;
+    margin-right: 1em;
+  }
+}
+
+caption,
+figcaption {
+  line-height: 3;
+  text-align: center;
+}
+
+figcaption.code {
+  counter-increment: code;
+
+  &:before {
+    content: "ソースコード " counter(code) " :";
+    margin-right: 1em;
+  }
+}
+
+caption.table {
+  counter-increment: table;
+
+  &:before {
+    content: "表 " counter(table) " :";
+    margin-right: 1em;
+  }
+}
+
+figcaption.fig {
+  counter-increment: fig;
+
+  &:before {
+    content: "図 " counter(fig) " :";
+    margin-right: 1em;
   }
 }
 
 .page {
-  // ユーザ側で可変にしたい
-  width: 1000px;
+  width: 210mm;
+  min-height: 296mm;
   box-shadow: 5px 5px 20px $light-gray;
   margin: 50px auto;
   padding: 80px 50px;
+  page-break-after: always;
+  position: relative;
+
+  // TODO: ページ番号をどうにか
+  @media print {
+    /* &:after { */
+      /* position: absolute; */
+      /* bottom: 20px; */
+      /* right: 50%; */
+      /* text-indent: 0.5em; */
+      /* counter-increment: page; */
+      /* content: counter(page); */
+    /* } */
+  }
+
+  @media print {
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: A4;
 }

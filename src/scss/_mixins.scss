@@ -50,10 +50,7 @@
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
   margin: 10px 0;
-
-  @media (max-width: 900px) {
-    line-height: $text-line-height-sm;
-  }
+  text-indent: 1em;
 }
 
 
@@ -67,10 +64,6 @@
   padding-left: 20px;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
-
-  @media (max-width: 900px) {
-    line-height: $text-line-height-sm;
-  }
 }
 
 
@@ -79,18 +72,6 @@
 @mixin strong {
   font-weight: bold;
   margin: 0 0.1rem;
-}
-
-
-/* keyboard */
-
-@mixin kbd {
-  background-color: lighten($light-gray, 15%);
-  color: $lol-pink;
-  padding: 0.1rem 0.4rem;
-  margin: 0 0.4rem;
-  border-radius: 4px;
-  font-weight: normal;
 }
 
 
@@ -110,10 +91,6 @@
   color: $black;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
-
-  @media (max-width: 900px) {
-    line-height: $text-line-height-sm;
-  }
 }
 
 
@@ -123,10 +100,6 @@
   padding-left: 40px;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
-
-  @media (max-width: 900px) {
-    line-height: $text-line-height-sm;
-  }
 }
 
 
@@ -145,18 +118,43 @@
   border-collapse: collapse;
   border-spacing: 0;
   line-height: $text-line-height;
-  width: 100%;
-
-  @media (max-width: 900px) {
-    line-height: $text-line-height-sm;
-  }
+  margin: 20px auto;
 
   th,
   td {
+    // TODO: 数字は右寄せとかをJSで
     text-align: left;
-    border: 1px solid $light-gray;
-    padding: 0.8rem 2rem;
+    border: 1px solid $black;
+    padding: 0.4em 1em;
   }
 
-  th { background-color: lighten($light-gray, 15%); }
+  th { text-align: center; }
+}
+
+
+/* pre */
+
+@mixin code {
+  font-family: $code-font;
+}
+
+@mixin pre {
+  border: 1px solid $black;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+
+/* keyboard */
+
+@mixin kbd {
+  padding: 0.1rem 0.4rem;
+  margin: 0 0.4rem;
+  font-weight: bold;
+}
+
+/* figure */
+
+@mixin figure {
+  margin: 20px auto;
 }
