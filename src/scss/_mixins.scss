@@ -135,12 +135,16 @@
 
 @mixin code {
   font-family: $code-font;
+  letter-spacing: $code-letter-spacing;
 }
 
 @mixin pre {
   border: 1px solid $black;
   padding: 1em;
   margin: 0 auto;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 
