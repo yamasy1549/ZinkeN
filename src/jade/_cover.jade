@@ -1,7 +1,14 @@
-mixin cover(title, author, date)
+mixin cover(title, authors, date)
   .page.cover
     section
-      h1.title= title
+      if title
+        h1.title= title
       p
-        span.author= author
-        span.tile: time= date
+        if authors.length < 2
+          span.author= authors
+        else
+          .authors
+            each author in authors
+              span.author= author
+        if date
+          span.date: time= date

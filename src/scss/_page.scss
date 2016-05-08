@@ -53,14 +53,18 @@
     counter-reset: page;
   }
 
-  .title {
-    margin: 0 0 40px;
-  }
+  .title { margin: 0 0 40px; }
 
-  // TODO: authorが複数人の時
   .author,
   .date {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: $text-font-size * 1.2;
+  }
+
+  .authors {
+    .author:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
 
   * {
