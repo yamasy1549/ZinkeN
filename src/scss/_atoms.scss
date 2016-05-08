@@ -25,6 +25,7 @@ blockquote { @include blockquote; }
 strong { @include strong; }
 hr { @include hr; }
 small { @include small; }
+cite { @include cite; }
 ul,
 ol {
   @include list;

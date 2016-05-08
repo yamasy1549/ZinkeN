@@ -1,6 +1,7 @@
 doctype html
 include ./_variables
 include ./_head
+include ./_script
 include ./_cover
 
 html(lang="ja")
@@ -136,7 +137,8 @@ html(lang="ja")
                 printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
                 return 0;
               }
+    .page
+      section
+        h2 参考文献
 
-    script(src="https://code.jquery.com/jquery-2.2.3.min.js")
-    script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
-    script(src="./scripts/mathjax.js")
+    +script()
