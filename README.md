@@ -54,6 +54,8 @@ Jade と SCSS それから MathJax で書けるようになっています。
 
 <img alt="5枚目" src="./images/zinken-5.png">
 
+[上のPDF見本](https://github.com/yamasy1549/ZinkeN/files/253977/ZinkeN.pdf)
+
 
 # これからがんばります
 
