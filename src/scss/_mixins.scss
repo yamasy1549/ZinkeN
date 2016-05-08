@@ -46,6 +46,7 @@
 /* paragraph */
 
 @mixin p {
+  font-size: $text-font-size;
   color: $black;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;

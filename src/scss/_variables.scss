@@ -6,8 +6,8 @@ $light-gray: #ccc;
 $primary-fonts: "ヒラギノ明朝 ProN W3", "游明朝", "Hiragino Mincho ProN", YuMincho, "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
 $code-font: Ricty;
 
-$text-font-size: 15px;
-$code-font-size: 15px;
+$text-font-size: 12pt;
+$code-font-size: 12pt;
 
 $text-line-height: 1.75;
 $text-line-height-sm: 2.1;
@@ -18,7 +18,7 @@ $page-size: A4;
 $page-width: 210mm;
 $page-height: 297mm;
 
-$page-padding-top: 30px;
-$page-padding-bottom: $page-padding-top;
-$page-padding-left: 20px;
+$page-padding-top: 15mm;
+$page-padding-bottom: 25mm;
+$page-padding-left: 20mm;
 $page-padding-right: $page-padding-left;
