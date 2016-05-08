@@ -34,3 +34,13 @@ figcaption.code,
     margin-right: 0.3em;
   }
 }
+
+figcaption.list
+.caption.list {
+  counter-increment: list;
+
+  &:before {
+    content: "リスト " counter(list) " :";
+    margin-right: 0.3em;
+  }
+}
