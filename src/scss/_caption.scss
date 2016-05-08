@@ -1,24 +1,35 @@
 figcaption,
-.figcaption {
+.figcaption,
+caption,
+.caption,
+.fig,
+.table,
+.code,
+.list {
   line-height: 3;
   text-align: center;
+
+  &:before {
+    content: "";
+    margin-right: 0.3em;
+  }
+}
+
+figcaption,
+.figcaption {
   counter-increment: fig;
 
   &:before {
     content: "図 " counter(fig) " :";
-    margin-right: 0.3em;
   }
 }
 
 caption,
 .caption {
-  line-height: 3;
-  text-align: center;
   counter-increment: table;
 
   &:before {
     content: "表 " counter(table) " :";
-    margin-right: 0.3em;
   }
 }
 
@@ -35,7 +46,6 @@ caption,
 
   &:before {
     content: "表 " counter(table) " :";
-    margin-right: 0.3em;
   }
 }
 
@@ -44,7 +54,6 @@ caption,
 
   &:before {
     content: "ソースコード " counter(code) " :";
-    margin-right: 0.3em;
   }
 }
 
@@ -53,6 +62,5 @@ caption,
 
   &:before {
     content: "リスト " counter(list) " :";
-    margin-right: 0.3em;
   }
 }
