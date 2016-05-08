@@ -1,29 +1,39 @@
 @page {
   size: $page-size;
-  margin: 50px 50px;
+  padding: $page-padding-top $page-padding-right $page-padding-bottom $page-padding-left;
 }
 
 .page {
   width: $page-width;
-  height: $page-height - 1mm;
-  box-shadow: 5px 5px 20px $light-gray;
-  margin: 50px auto;
+  height: $page-height;
+  margin: 50px auto 0;
   padding: $page-padding-top $page-padding-right $page-padding-bottom $page-padding-left;
   page-break-after: always;
   position: relative;
 
+  @media screen {
+    margin: $page-height*0.3 auto;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    background-color: $white;
+    width: $page-width * 1.2;
+    height: $page-height * 1.2;
+    z-index: -1;
+    box-shadow: 0 0 10px $light-gray;
+  }
+
   &:after {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
     right: 50%;
     text-indent: 0.5em;
     counter-increment: page;
     content: counter(page);
-  }
-
-  // TODO: ページ番号をどうにか
-  @media print {
-    box-shadow: none;
   }
 
   > section:first-child > h2:first-child { margin-top: 0; }
