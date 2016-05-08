@@ -42,17 +42,17 @@ Jade と SCSS それから MathJax で書けるようになっています。
 
 印刷は…ブラウザからPDF吐くかそのまま印刷するか…かな…
 
-<img alt="表紙" src="./images/zinken-0.png" width="400px">
+<img alt="表紙" src="./images/zinken-0.png">
 
-<img alt="1枚目" src="./images/zinken-1.png" width="400px">
+<img alt="1枚目" src="./images/zinken-1.png">
 
-<img alt="2枚目" src="./images/zinken-2.png" width="400px">
+<img alt="2枚目" src="./images/zinken-2.png">
 
-<img alt="3枚目" src="./images/zinken-3.png" width="400px">
+<img alt="3枚目" src="./images/zinken-3.png">
 
-<img alt="4枚目" src="./images/zinken-4.png" width="400px">
+<img alt="4枚目" src="./images/zinken-4.png">
 
-<img alt="5枚目" src="./images/zinken-5.png" width="400px">
+<img alt="5枚目" src="./images/zinken-5.png">
 
 
 # これからがんばります
