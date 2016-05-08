@@ -64,14 +64,3 @@ caption,
     content: "リスト " counter(list) " :";
   }
 }
-
-
-/* nocaption */
-
-.nocaption {
-  counter-increment: none;
-
-  &:before {
-    content: "";
-  }
-}

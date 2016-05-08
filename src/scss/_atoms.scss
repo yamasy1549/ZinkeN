@@ -10,7 +10,7 @@
   font-family: $primary-fonts;
   line-height: 1;
   position: relative;
-  font-size: 15px;
+  font-size: $text-font-size;
 }
 
 h1 { @include h1; }

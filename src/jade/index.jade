@@ -8,137 +8,186 @@ html(lang="ja")
   +head(title)
 
   body
-    +cover(title, author, date)
+    +cover(title, authors, date)
 
     .page
       section
-        h2 実験内容
-        p 実験に使用した挿入ソートのソースコードをソースコード 1 からソースコード 2 に示す。random_case.c を実行するとソート対象の要素がランダムな順に並んだケース、descending_case.c を実行するとソート対象の要素が降順に並んだケースの時間を計測することができる。なお、ソースコード中の N はソートを行う要素の数を表し、それぞれ 10000, 30000, 100000 の場合について測定を行った。また、プログラムは bash の for ループ構文を用いて 10 回実行 (11 回実行し、入力に対する割り込みがあると思われる 1 回目の実行の結果を除く) し、その結果を平均した。
+        h2 表紙
+        p
+          | 表紙に載せる情報
+          ul
+            li: code title
+            li: code authors
+            li: code date
+          | は Jade の変数として管理しています。
+          code src/jade/_variables.jade
+          | を編集してください。
 
       section
-        h2 実験結果
-        p N の値に対する挿入ソートの所要時間を表 1 及び図 1 に示す。
-        table
-          caption.table N に対するソートの所要時間 (単位:秒)
-          tr
-            th \(N\)
-            th random_case.c
-            th descending_case.c
-          tr
-            td 10000
-            td 0.20
-            td 0.19
-          tr
-            td 30000
-            td 1.84
-            td 1.79
-          tr
-            td 100000
-            td 20.1
-            td 19.87
+        h2 見出しと本文
+        p ↑は章を表します。
+        p
+          | 章は
+          code h2
+          | から始まります。
+        section
+          h3 節
+          p これは節の中身です。
+          section
+            h4 小節
+            p
+              | 番号は自動的に振られます。CSS の counter 機能を使っています。margin や . の数など指定されている形式があれば、その都度書き換えてください。ひとまず小小節（
+              code h5
+              | ）までサポートしています。
+          section
+            h4.nonumber 参考文献
+            p 例えば、参考文献は章番号を記述しません。
+            p
+              code .nonumber
+              | クラスを当てることで章や節の番号を付けないようにできます。
 
     .page
       section
-        h2 考察
-        p 図 1 から分かるように、挿入ソートの所要時間は\(N^2\)に比例する。また、要素がランダムに配置されているケースよりも降順に配置されているケースの方が、若干ではあるが高速にソートできることがわかった。
+        h2 図表、ソースコード
+        p
+          | 図（
+          code figure,img
+          |）や表（
+          code table
+          | ）、ソースコード（
+          code pre,code
+          | ）に対応しています。
+        section
+          p
+            | HTMLタグによって、またはクラスを当てることで
+            code caption
+            | の「図」「表」などを自動で決定します。
+          table
+            caption.table
+              code caption
+              | 対応表
+            tr
+              th: code figcaption, .figcaption, .fig
+              td 図n : 
+            tr
+              th: code caption, .caption, .table
+              td 表n : 
+            tr
+              th: code .code
+              td ソースコードn : 
+            tr
+              th: code .list
+              td リストn : 
+          p
+            code .nonumber
+            | を当てることでキャプションの番号なしも指定できます。
+          p また表中の文字列は基本的に中央揃えですが、数値は自動的に右揃えになります。個別に指定したい場合はHTMLに直接スタイルを書き込んでください（クラス指定で対処できるようにしたいと思っています）。
+          table
+            caption.nonumber
+              | キャプションなし（
+              code .nonumber
+              | ）
+            tr
+              th \(N\)
+              th random_case.c
+              th descending_case.c
+            tr
+              td すごい文字列
+              td 0.20
+              td 0.19
+            tr
+              td 30000
+              td 1.84
+              td 1.79
+            tr
+              td 100000
+              td 20.1
+              td 19.87
 
+    .page
+      section
+        p ソースコードも書けます。一行が長い場合の折り返しが上手く行かないかもしれません、がんばります。
         figure
-          figcaption.code insert_sort.c
+          figcaption.code d_chain.d
           pre
             :code
-              void sort(int length, int* a){
-                int i, j, k, tmp;
-                for(i=1; i<length; ++i){
-                  for(j=0; j<i; ++j){
-                    if(a[j] > a[i]){
-                      tmp = a[i];
-                      for(k=i; j<k; --k){
-                        a[k] = a[k-1];
+              import std.stdio;
+              import std.conv;
+
+              void main(string[] args) {
+                auto limit = to!(int)(args[1]);
+
+                for (uint i; i < limit; i++) {
+                  writeln("  _   _");
+                  writeln(" (_) (_)");
+                  writeln("/______ \\");
+                  writeln("\\\\(O(O \\/");
+                  writeln(" | | | |");
+                  writeln(" | |_| |");
+                  writeln("/______/");
+                  writeln("  <   >");
+                  writeln(" (_) (_)");
+                }
+              }
+        figure
+          figcaption.list sieve.go
+          pre
+            :code
+              package main
+
+              import "fmt"
+
+              func main() {
+                  var primes [100]bool
+                  for n := 2; n < len(primes); n++ {
+                      if primes[n] { continue }
+                      for m := 2 * n; m < len(primes); m += n {
+                          primes[m] = true
                       }
-                      a[j] = tmp;
-                      break;
-                    }
+                      fmt.Print(n, " ")
                   }
-                }
               }
 
     .page
+      .col-2
         figure
-          figcaption.code random_case.c
-          pre
-            :code
-              #include <stdio.h>
-              #include <stdlib.h>
-              #include <time.h>
-              #include"insert_sort.c"
-              #define N 30000
-
-              extern void sort(int, int*);
-
-              int main(void){
-                int i, a[N];
-                time_t seed;
-                clock_t start , end;
-
-                time(&seed);
-                srand(seed);
-
-                for(i=0;i<N;++i){
-                  a[i] = rand ()%N;
-                }
-
-                start=clock ();
-                sort(N,a);
-                end=clock ();
-
-                for(i=0;i<N-1;++i){
-                  if(a[i]>a[i+1]){
-                    printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
-                    exit (1);
-                  }
-                }
-
-                printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
-                return 0;
-              }
-
-    .page
+          img(src="./images/yamasy.png")
+          figcaption やましーのアイコン・カラー
         figure
-          figcaption.code descending_case.c
-          pre
-            :code
-              #include <stdio.h>
-              #include <stdlib.h>
-              #include <time.h>
-              #include"insert_sort.c"
-              #define N 100000
+          img(src="./images/yamasy-bw.png")
+          figcaption やましーのアイコン・白黒
 
-              extern void sort(int, int*);
+      section
+        h2 数式
+        p 数式は MathJax を使って描画しています。
+        p 特にインラインで高さが上手く合わなくて（ \(V_{2n}\)とか）、文字が多少上や下にはみ出たりします。職人の手によるあたたかみのある修正を行いますので、気になる方は職人になるかしばらくお待ちください。
+        p $$\epsilon = \frac{V_{20}-V_{2n}}{V_{2n}}\times100$$
 
-              int main(void){
-                int i, a[N];
-                clock_t start , end;
+      section
+        h2 段組み
+        p
+          code .col-x
+          |  (\(1 \leq x \leq 5)\)
+          | クラスを当てた要素の中に段組みしたい要素を入れます。
+        .col-3
+          p 『心』は大正三年四月から八月にわたつて東京大阪両朝日へ同時に掲載された小説である。
+          p 当時の予告には数種の短篇を合してそれに『心』といふ標題を冠らせる積〔つもり〕だと読者に断わつたのであるが、其短篇の第一に当る『先生の遺書』を書き込んで行くうちに、予想通り早く片が付かない事を発見したので、とう／＼その一篇丈〔だけ〕を単行本に纏めて公けにする方針に模様がへをした。
+          p 然し此『先生の遺書』も自から独立したやうな又関係の深いやうな三個の姉妹篇から組み立てられてゐる以上、私はそれを『先生と私』、『両親と私』、『先生と遺書』とに区別して、全体に『心』といふ見出しを付けても差支〔さしつかえ〕ないやうに思つたので、題は元の儘にして置いた。たゞ中味を上中下に仕切つた丈が、新聞に出た時との相違である。
 
-                for(i=0;i<N;++i){
-                  a[i] = N-i-1;
-                }
-
-                start=clock ();
-                sort(N,a);
-                end=clock ();
-
-                for(i=0;i<N-1;++i){
-                  if(a[i]>a[i+1]){
-                    printf("Sort failured at a[%d]:%d and a[%d]:%d.\n", i, a[i], i+1, a[i+1]);
-                    exit (1);
-                  }
-                }
-
-                printf("Elapsed time: %4.2lf sec\n", (double)(end -start) / CLOCKS_PER_SEC );
-                return 0;
-              }
     .page
       section
-        h2 参考文献
+        h2 ページについて
+        p
+          code src/scss/_variables.scss
+          | でページに関する変数（
+          code $text-font-size, $page-size, $page-padding-top
+          | など）を管理しています。
+        p
+          | この ZinkeN ですが
+          strong 自動で改ページができません。
+          | なのでコンテンツを見てページごとに手動で
+          code .page
+          |クラスを当ててください、すみません。あと最後に空白のページが出てくるかもしれません、すみません。
+
 
     +script()

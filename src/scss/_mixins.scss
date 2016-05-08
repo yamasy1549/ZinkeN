@@ -46,6 +46,7 @@
 /* paragraph */
 
 @mixin p {
+  font-size: $text-font-size;
   color: $black;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
@@ -107,6 +108,7 @@
   padding-left: 40px;
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
+  margin-bottom: 8px;
 }
 
 
@@ -145,6 +147,7 @@
 
 @mixin code {
   font-family: $code-font;
+  font-size: $code-font-size;
   letter-spacing: $code-letter-spacing;
 }
 
