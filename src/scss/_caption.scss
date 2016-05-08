@@ -1,12 +1,7 @@
-caption,
 figcaption,
-.caption {
+.figcaption {
   line-height: 3;
   text-align: center;
-}
-
-figcaption.fig,
-.caption.fig {
   counter-increment: fig;
 
   &:before {
@@ -15,8 +10,10 @@ figcaption.fig,
   }
 }
 
-caption.table,
-.caption.table {
+caption,
+.caption {
+  line-height: 3;
+  text-align: center;
   counter-increment: table;
 
   &:before {
@@ -25,8 +22,24 @@ caption.table,
   }
 }
 
-figcaption.code,
-.caption.code {
+.fig {
+  counter-increment: fig;
+
+  &:before {
+    content: "図 " counter(fig) " :";
+  }
+}
+
+.table {
+  counter-increment: table;
+
+  &:before {
+    content: "表 " counter(table) " :";
+    margin-right: 0.3em;
+  }
+}
+
+.code {
   counter-increment: code;
 
   &:before {
@@ -35,8 +48,7 @@ figcaption.code,
   }
 }
 
-figcaption.list
-.caption.list {
+.list {
   counter-increment: list;
 
   &:before {
