@@ -1,0 +1,55 @@
+@page {
+  size: $page-size;
+  margin: 50px 50px;
+}
+
+.page {
+  width: $page-width;
+  height: $page-height - 1mm;
+  box-shadow: 5px 5px 20px $light-gray;
+  margin: 50px auto;
+  padding: $page-padding-top $page-padding-right $page-padding-bottom $page-padding-left;
+  page-break-after: always;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    bottom: 40px;
+    right: 50%;
+    text-indent: 0.5em;
+    counter-increment: page;
+    content: counter(page);
+  }
+
+  // TODO: ページ番号をどうにか
+  @media print {
+    box-shadow: none;
+  }
+}
+
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+
+  &:after {
+    content: '';
+    counter-reset: page;
+  }
+
+  .title {
+    margin: 0 0 40px;
+  }
+
+  // TODO: authorが複数人の時
+  .author,
+  .date {
+    margin-bottom: 20px;
+  }
+
+  * {
+    text-align: center;
+    display: block;
+  }
+}

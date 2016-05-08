@@ -1,0 +1,36 @@
+caption,
+figcaption,
+.caption {
+  line-height: 3;
+  text-align: center;
+}
+
+figcaption.fig,
+.caption.fig {
+  counter-increment: fig;
+
+  &:before {
+    content: "図 " counter(fig) " :";
+    margin-right: 0.3em;
+  }
+}
+
+caption.table,
+.caption.table {
+  counter-increment: table;
+
+  &:before {
+    content: "表 " counter(table) " :";
+    margin-right: 0.3em;
+  }
+}
+
+figcaption.code,
+.caption.code {
+  counter-increment: code;
+
+  &:before {
+    content: "ソースコード " counter(code) " :";
+    margin-right: 0.3em;
+  }
+}
