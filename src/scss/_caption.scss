@@ -1,36 +1,77 @@
-caption,
 figcaption,
-.caption {
+.figcaption,
+caption,
+.caption,
+.fig,
+.table,
+.code,
+.list {
   line-height: 3;
   text-align: center;
+
+  &:before {
+    content: "";
+    margin-right: 0.3em;
+  }
 }
 
-figcaption.fig,
-.caption.fig {
+figcaption,
+.figcaption {
   counter-increment: fig;
 
   &:before {
     content: "図 " counter(fig) " :";
-    margin-right: 0.3em;
   }
 }
 
-caption.table,
-.caption.table {
+caption,
+.caption {
   counter-increment: table;
 
   &:before {
     content: "表 " counter(table) " :";
-    margin-right: 0.3em;
   }
 }
 
-figcaption.code,
-.caption.code {
+.fig {
+  counter-increment: fig;
+
+  &:before {
+    content: "図 " counter(fig) " :";
+  }
+}
+
+.table {
+  counter-increment: table;
+
+  &:before {
+    content: "表 " counter(table) " :";
+  }
+}
+
+.code {
   counter-increment: code;
 
   &:before {
     content: "ソースコード " counter(code) " :";
-    margin-right: 0.3em;
+  }
+}
+
+.list {
+  counter-increment: list;
+
+  &:before {
+    content: "リスト " counter(list) " :";
+  }
+}
+
+
+/* nocaption */
+
+.nocaption {
+  counter-increment: none;
+
+  &:before {
+    content: "";
   }
 }
