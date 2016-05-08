@@ -25,6 +25,11 @@
   @media print {
     box-shadow: none;
   }
+
+  > section:first-child > h2:first-child { margin-top: 0; }
+  > section:first-child > h3:first-child { margin-top: 0; }
+  > section:first-child > h4:first-child { margin-top: 0; }
+  > section:first-child > h5:first-child { margin-top: 0; }
 }
 
 .cover {
