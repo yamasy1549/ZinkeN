@@ -24,7 +24,12 @@
     width: $page-width * 1.2;
     height: $page-height * 1.2;
     z-index: -1;
-    box-shadow: 0 0 10px $light-gray;
+  }
+
+  @media screen {
+    &:before {
+      box-shadow: 0 0 10px $light-gray;
+    }
   }
 
   &:after {
