@@ -149,6 +149,7 @@
   font-family: $code-font;
   font-size: $code-font-size;
   letter-spacing: $code-letter-spacing;
+  margin: 0 0.2em;
 }
 
 @mixin pre {
