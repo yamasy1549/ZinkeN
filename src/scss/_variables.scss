@@ -18,7 +18,7 @@ $page-size: A4;
 $page-width: 210mm;
 $page-height: 297mm;
 
-$page-padding-top: 15mm;
-$page-padding-bottom: 25mm;
+$page-padding-top: 25mm;
+$page-padding-bottom: $page-padding-top;
 $page-padding-left: 20mm;
 $page-padding-right: $page-padding-left;

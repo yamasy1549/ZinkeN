@@ -1,4 +1,6 @@
 [class*="col-"] {
+  page-break-inside: avoid;
+
   * { margin: 0; }
 }
 

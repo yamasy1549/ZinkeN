@@ -8,6 +8,7 @@ caption,
 .list {
   line-height: 3;
   text-align: center;
+  page-break-inside: avoid;
 
   &:before {
     content: "";
