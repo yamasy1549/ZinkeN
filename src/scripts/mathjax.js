@@ -14,6 +14,3 @@ function tweakMathjax() {
     $(".mjx-sub .mjx-char")
         .css("transform", "scale(0.8)");
 }
-
-rightAlign();
-tweakMathjax();

@@ -1,5 +1,17 @@
 mixin script
   script(src="https://code.jquery.com/jquery-2.2.3.min.js")
-  script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
   script(src="./scripts/mathjax.js")
   script(src="./scripts/page.js")
+  script.
+    window.MathJax = {
+      AuthorInit: function () {
+        MathJax.Hub.Register.StartupHook("Begin",function () {
+          MathJax.Hub.Queue(
+            ["Typeset",MathJax.Hub],
+            [rightAlign, tweakMathjax],
+            [checkElements, newPage]
+          )
+        });
+      }
+    };
+  script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")

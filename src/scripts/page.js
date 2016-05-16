@@ -89,9 +89,3 @@ function checkElements() {
         }
     }
 }
-
-// TODO: MathJax読み込みが終わったら…って書きたい（わからないから2s待つ糞コードになってる）
-setInterval(function() {
-    checkElements();
-    newPage();
-}, 2000);
