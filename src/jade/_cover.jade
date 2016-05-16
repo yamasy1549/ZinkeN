@@ -1,14 +1,17 @@
 mixin cover(title, authors, date)
+  // とりあえずpopとjoinがあればArrayとしてる
+  - function isArray(o){ return o != null && typeof o === "object" && 'pop' in o && 'join' in o; }
+
   .page.cover
     section
       if title
         h1.title= title
       p
-        if authors.length < 2
-          span.author= authors
-        else
-          .authors
+        .authors
+          if isArray(authors)
             each author in authors
               span.author= author
+          else
+              span.author= authors
         if date
           span.date: time= date

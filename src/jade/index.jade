@@ -1,5 +1,4 @@
 doctype html
-include ./_variables
 include ./_head
 include ./_script
 include ./_cover
@@ -10,20 +9,20 @@ html(lang="ja")
     link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet")
 
   body
-    +cover(title, authors, date)
+    +cover("ZinkeNのつかいかた", "E14xx やましー", "2016年5月16日")
 
     .pages
       section
         h2 表紙
         p
-          | 表紙に載せる情報
-          ul
-            li: code title
-            li: code authors
-            li: code date
-          | は Jade の変数として管理しています。
-          code src/jade/_variables.jade
-          | を編集してください。
+          | jadeファイル内
+          code body
+          | タグの次に下のように書きます。
+        figure
+          figcaption.code 表紙の書きかた
+          pre
+            :code
+              +cover("ZinkeNのつかいかた", "E14xx やましー", "2016年5月16日")
 
       section
         h2 見出しと本文
