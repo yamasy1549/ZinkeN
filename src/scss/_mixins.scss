@@ -12,6 +12,7 @@
   color: $black;
   margin: 24px 0 14px;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 @mixin h3 {
@@ -19,6 +20,7 @@
   color: $black;
   margin: 24px 0 14px;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 @mixin h4 {
@@ -26,6 +28,7 @@
   color: $black;
   margin: 24px 0 14px;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 @mixin h5 {
@@ -33,6 +36,7 @@
   color: $black;
   margin: 24px 0 14px;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 @mixin h6 {
@@ -40,6 +44,7 @@
   color: $black;
   margin: 24px 0 14px;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 
@@ -52,6 +57,7 @@
   letter-spacing: $text-letter-spacing;
   margin: 0;
   text-indent: 1em;
+  page-break-inside: avoid;
 }
 
 
@@ -109,6 +115,7 @@
   line-height: $text-line-height;
   letter-spacing: $text-letter-spacing;
   margin-bottom: 8px;
+  page-break-inside: avoid;
 }
 
 
@@ -129,12 +136,13 @@
   border-spacing: 0;
   line-height: $text-line-height;
   margin: 20px auto;
+  page-break-inside: avoid;
 
   th,
   td {
     text-align: center;
     border: 1px solid $black;
-    padding: 0.4em 1em;
+    padding: 0.1em 0.4em;
   }
 
   th { text-align: center; }
@@ -174,4 +182,5 @@
 
 @mixin figure {
   margin: 20px auto;
+  page-break-inside: avoid;
 }

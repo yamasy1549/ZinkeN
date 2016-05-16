@@ -6,11 +6,13 @@ include ./_cover
 
 html(lang="ja")
   +head(title)
+  head
+    link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet")
 
   body
     +cover(title, authors, date)
 
-    .page
+    .pages
       section
         h2 表紙
         p
@@ -46,18 +48,30 @@ html(lang="ja")
               code .nonumber
               | クラスを当てることで章や節の番号を付けないようにできます。
 
-    .page
       section
-        h2 図表、ソースコード
-        p
-          | 図（
-          code figure,img
-          |）や表（
-          code table
-          | ）、ソースコード（
-          code pre,code
-          | ）に対応しています。
+        .page
+          h2 図表、ソースコード
+          p
+            | 図（
+            code figure,img
+            |）や表（
+            code table
+            | ）、ソースコード（
+            code pre,code
+            | ）に対応しています。
+
+          section
+            h3 図
+            .col-2
+              figure
+                img(src="./images/yamasy.png")
+                figcaption やましーのアイコン・カラー
+              figure
+                img(src="./images/yamasy-bw.png")
+                figcaption やましーのアイコン・白黒
+
         section
+          h3 表
           p
             | HTMLタグによって、またはクラスを当てることで
             code caption
@@ -104,90 +118,79 @@ html(lang="ja")
               td 20.1
               td 19.87
 
-    .page
-      section
-        p ソースコードも書けます。一行が長い場合の折り返しが上手く行かないかもしれません、がんばります。
-        figure
-          figcaption.code d_chain.d
-          pre
-            :code
-              import std.stdio;
-              import std.conv;
+        .page
+          section
+            h3 ソースコード
+            p ソースコードも書けます。一行が長い場合の折り返しが上手く行かないかもしれません、がんばります。
+            figure
+              figcaption.list sieve.go
+              pre
+                :code
+                  package main
 
-              void main(string[] args) {
-                auto limit = to!(int)(args[1]);
+                  import "fmt"
 
-                for (uint i; i < limit; i++) {
-                  writeln("  _   _");
-                  writeln(" (_) (_)");
-                  writeln("/______ \\");
-                  writeln("\\\\(O(O \\/");
-                  writeln(" | | | |");
-                  writeln(" | |_| |");
-                  writeln("/______/");
-                  writeln("  <   >");
-                  writeln(" (_) (_)");
-                }
-              }
-        figure
-          figcaption.list sieve.go
-          pre
-            :code
-              package main
-
-              import "fmt"
-
-              func main() {
-                  var primes [100]bool
-                  for n := 2; n < len(primes); n++ {
-                      if primes[n] { continue }
-                      for m := 2 * n; m < len(primes); m += n {
-                          primes[m] = true
+                  func main() {
+                      var primes [100]bool
+                      for n := 2; n < len(primes); n++ {
+                          if primes[n] { continue }
+                          for m := 2 * n; m < len(primes); m += n {
+                              primes[m] = true
+                          }
+                          fmt.Print(n, " ")
                       }
-                      fmt.Print(n, " ")
                   }
-              }
+            figure
+              figcaption.code d_chain.d
+              pre
+                :code
+                  import std.stdio;
+                  import std.conv;
 
-    .page
-      .col-2
-        figure
-          img(src="./images/yamasy.png")
-          figcaption やましーのアイコン・カラー
-        figure
-          img(src="./images/yamasy-bw.png")
-          figcaption やましーのアイコン・白黒
+                  void main(string[] args) {
+                    auto limit = to!(int)(args[1]);
 
-      section
-        h2 数式
-        p 数式は MathJax を使って描画しています。
-        p 特にインラインで高さが上手く合わなくて（ \(V_{2n}\)とか）、文字が多少上や下にはみ出たりします。職人の手によるあたたかみのある修正を行いますので、気になる方は職人になるかしばらくお待ちください。
-        p $$\epsilon = \frac{V_{20}-V_{2n}}{V_{2n}}\times100$$
+                    for (uint i; i < limit; i++) {
+                      writeln("  _   _");
+                      writeln(" (_) (_)");
+                      writeln("/______ \\");
+                      writeln("\\\\(O(O \\/");
+                      writeln(" | | | |");
+                      writeln(" | |_| |");
+                      writeln("/______/");
+                      writeln("  <   >");
+                      writeln(" (_) (_)");
+                    }
+                  }
 
-      section
-        h2 段組み
-        p
-          code .col-x
-          |  (\(1 \leq x \leq 5)\)
-          | クラスを当てた要素の中に段組みしたい要素を入れます。
-        .col-3
-          p 『心』は大正三年四月から八月にわたつて東京大阪両朝日へ同時に掲載された小説である。
-          p 当時の予告には数種の短篇を合してそれに『心』といふ標題を冠らせる積〔つもり〕だと読者に断わつたのであるが、其短篇の第一に当る『先生の遺書』を書き込んで行くうちに、予想通り早く片が付かない事を発見したので、とう／＼その一篇丈〔だけ〕を単行本に纏めて公けにする方針に模様がへをした。
-          p 然し此『先生の遺書』も自から独立したやうな又関係の深いやうな三個の姉妹篇から組み立てられてゐる以上、私はそれを『先生と私』、『両親と私』、『先生と遺書』とに区別して、全体に『心』といふ見出しを付けても差支〔さしつかえ〕ないやうに思つたので、題は元の儘にして置いた。たゞ中味を上中下に仕切つた丈が、新聞に出た時との相違である。
+      .page
+        section
+          h2 数式
+          p 数式は MathJax を使って描画しています。
+          p 特にインラインで高さが上手く合わなくて（ \(V_{2n}\)とか）、文字が多少上や下にはみ出たりします。職人の手によるあたたかみのある修正を行いますので、気になる方は職人になるかしばらくお待ちください。
+          p $$\epsilon = \frac{V_{20}-V_{2n}}{V_{2n}}\times100$$
 
-    .page
-      section
-        h2 ページについて
-        p
-          code src/scss/_variables.scss
-          | でページに関する変数（
-          code $text-font-size, $page-size, $page-padding-top
-          | など）を管理しています。
-        p
-          | この ZinkeN ですが
-          strong 自動で改ページができません。
-          | なのでコンテンツを見てページごとに手動で
-          code .page
-          |クラスを当ててください、すみません。あと最後に空白のページが出てくるかもしれません、すみません。
+        section
+          h2 段組み
+          p
+            code .col-x
+            |  (\(1 \leq x \leq 5)\)
+            | クラスを当てた要素の中に段組みしたい要素を入れます。
+          .col-3
+            p 『心』は大正三年四月から八月にわたつて東京大阪両朝日へ同時に掲載された小説である。
+            p 当時の予告には数種の短篇を合してそれに『心』といふ標題を冠らせる積〔つもり〕だと読者に断わつたのであるが、其短篇の第一に当る『先生の遺書』を書き込んで行くうちに、予想通り早く片が付かない事を発見したので、とう／＼その一篇丈〔だけ〕を単行本に纏めて公けにする方針に模様がへをした。
+            p 然し此『先生の遺書』も自から独立したやうな又関係の深いやうな三個の姉妹篇から組み立てられてゐる以上、私はそれを『先生と私』、『両親と私』、『先生と遺書』とに区別して、全体に『心』といふ見出しを付けても差支〔さしつかえ〕ないやうに思つたので、題は元の儘にして置いた。たゞ中味を上中下に仕切つた丈が、新聞に出た時との相違である。
+            p 然し此『先生の遺書』も自から独立したやうな又関係の深いやうな三個の姉妹篇から組み立てられてゐる以上、私はそれを『先生と私』、『両親と私』、『先生と遺書』とに区別して、全体に『心』といふ見出しを付けても差支〔さしつかえ〕ないやうに思つたので、題は元の儘にして置いた。たゞ中味を上中下に仕切つた丈が、新聞に出た時との相違である。
 
+        section
+          h2 ページについて
+          p
+            code src/scss/_variables.scss
+            | でページに関する変数（
+            code $text-font-size, $page-size, $page-padding-top
+            | など）を管理しています。
+          p
+            code .page
+            | クラスを当てることで、その中身は自動改ページにかかわらず強制的に独立したページになります。
 
     +script()

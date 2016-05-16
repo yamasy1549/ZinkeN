@@ -1,5 +1,8 @@
 [class*="col-"] {
-  * { margin: 0; }
+  page-break-inside: avoid;
+
+  // TODO: caption系はmarginを残したい
+  *:not(figcaption):not(.figcaption):not(caption):not(.caption):not(.fig):not(.table):not(.code):not(.list) { margin: 0; }
 }
 
 .col-1 { columns: 1; }
