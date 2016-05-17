@@ -1,20 +1,19 @@
 'use strict';
 
+import autoprefixer from "gulp-autoprefixer";
+import browserSync  from "browser-sync";
+import concat       from "gulp-concat";
 import gulp         from "gulp";
+import imagemin     from "gulp-imagemin";
+import jade         from "gulp-jade";
 import loadPlugins  from "gulp-load-plugins";
-
-import jade          from "gulp-jade";
+import path         from "path";
+import plumber      from "gulp-plumber";
+import pngquant     from "imagemin-pngquant";
 import sass         from "gulp-sass";
 import sassGlob     from "gulp-sass-glob";
-import autoprefixer from "gulp-autoprefixer";
 import sassLint     from "gulp-sass-lint";
-import imagemin     from "gulp-imagemin";
-import pngquant     from "imagemin-pngquant";
 import uglify       from "gulp-uglify";
-import browserSync  from "browser-sync";
-import path         from "path";
-
-import plumber      from "gulp-plumber";
 
 const $           = loadPlugins();
 const reload      = browserSync.reload;
@@ -29,11 +28,11 @@ const SCRIPTS_DIR = path.join(SRC_DIR, "scripts");
 
 require('jade').filters.code = function(block) {
     return block
-        .replace( /&/g, '&amp;'  )
-        .replace( /</g, '&lt;'   )
-        .replace( />/g, '&gt;'   )
-        .replace( /"/g, '&quot;' )
-        .replace( /#/g, '&#35;'  )
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/#/g, '&#35;')
 }
 
 const JADE_OPTIONS = {
@@ -101,11 +100,18 @@ gulp.task("jsmin", () => {
         .pipe(gulp.dest(path.join(DEST_DIR, "scripts")));
 });
 
+gulp.task("jsconcat", () => {
+    return gulp.src(path.join(SCRIPTS_DIR, "**/*.js"))
+        .pipe(plumber())
+        .pipe(concat("zinken.js"))
+        .pipe(gulp.dest(path.join(DEST_DIR, "scripts")));
+});
+
 gulp.task("watch", () => {
     browserSync(BROWSER_SYNC_OPTIONS);
 
     gulp.watch([path.join(JADE_DIR, "**/*.jade")], ["jade", reload]);
     gulp.watch([path.join(SCSS_DIR, "**/*.{scss,css}")], ["scss", reload]);
     gulp.watch([path.join(SCRIPTS_DIR, "**/*.{jpg,jpeg,png,gif,svg}")], ["imagemin", reload]);
-    gulp.watch([path.join(SCRIPTS_DIR, "**/*.js")], ["jsmin", reload]);
+    gulp.watch([path.join(SCRIPTS_DIR, "**/*.js")], ["jsmin", "jsconcat", reload]);
 });
