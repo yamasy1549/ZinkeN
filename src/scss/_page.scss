@@ -3,6 +3,19 @@
   margin: $page-padding-top $page-padding-right $page-padding-bottom $page-padding-left;
 }
 
+.page_break {
+  page-break-before: always;
+  page-break-after: always;
+}
+
+.pages {
+  width: $page-width;
+
+  @media screen {
+    margin: 50px auto;
+  }
+}
+
 .page {
   width: $page-width;
   height: $page-height;
