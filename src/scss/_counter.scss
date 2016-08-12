@@ -53,7 +53,6 @@ h5 {
   }
 }
 
-ul.li-number,
 ol.li-number {
   // TODO: mixinで指定したい
   padding: 0;
@@ -90,4 +89,22 @@ ol.li-number {
   .li-f::before { content: "(f)"; }
   .li-g::before { content: "(g)"; }
   .li-h::before { content: "(h)"; }
+  .li-i::before { content: "(i)"; }
+  .li-j::before { content: "(j)"; }
+  .li-k::before { content: "(k)"; }
+  .li-l::before { content: "(l)"; }
+  .li-m::before { content: "(m)"; }
+  .li-n::before { content: "(n)"; }
+  .li-o::before { content: "(o)"; }
+  .li-p::before { content: "(p)"; }
+  .li-q::before { content: "(q)"; }
+  .li-r::before { content: "(r)"; }
+  .li-s::before { content: "(s)"; }
+  .li-t::before { content: "(t)"; }
+  .li-u::before { content: "(u)"; }
+  .li-v::before { content: "(v)"; }
+  .li-w::before { content: "(w)"; }
+  .li-x::before { content: "(x)"; }
+  .li-y::before { content: "(y)"; }
+  .li-z::before { content: "(z)"; }
 }

@@ -19,8 +19,8 @@ import uglify       from "gulp-uglify";
 const $           = loadPlugins();
 const reload      = browserSync.reload;
 
-const SRC_DIR     = path.join(__dirname, "./src");
-const DEST_DIR    = path.join(__dirname, "./dest");
+const SRC_DIR     = "src";
+const DEST_DIR    = "dest";
 
 const JADE_DIR    = path.join(SRC_DIR, "jade");
 const SCSS_DIR    = path.join(SRC_DIR, "scss");
@@ -123,8 +123,8 @@ gulp.task("compile", ["jade", "scss", "imagemin", "jsmin", "jsconcat"]);
 gulp.task("watch", ["compile"], () => {
     browserSync(BROWSER_SYNC_OPTIONS);
 
-    gulp.watch([path.join(JADE_DIR, "**/*.jade")], ["jade", reload]);
+    gulp.watch([path.join(JADE_DIR, "**/*.*")], ["jade", reload]);
     gulp.watch([path.join(SCSS_DIR, "**/*.{scss,css}")], ["scss", reload]);
-    gulp.watch([path.join(SCRIPTS_DIR, "**/*.{jpg,jpeg,png,gif,svg}")], ["imagemin", reload]);
+    gulp.watch([path.join(IMAGES_DIR, "**/*.{jpg,jpeg,png,gif,svg}")], ["imagemin", reload]);
     gulp.watch([path.join(SCRIPTS_DIR, "**/*.js")], ["jsmin", "jsconcat", reload]);
 });
