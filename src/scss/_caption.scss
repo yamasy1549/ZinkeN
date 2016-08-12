@@ -17,12 +17,17 @@ caption,
   }
 }
 
+[class^=col-] + .caption,
+[class^=col-] + .figcaption {
+  margin-top: 0;
+}
+
 figcaption,
 .figcaption {
   counter-increment: fig;
 
   &:before {
-    content: "図 " counter(fig) " :";
+    content: "図 " counter(fig) " ";
   }
 }
 
@@ -31,7 +36,7 @@ caption,
   counter-increment: table;
 
   &:before {
-    content: "表 " counter(table) " :";
+    content: "表 " counter(table) " ";
   }
 }
 
@@ -39,7 +44,7 @@ caption,
   counter-increment: fig;
 
   &:before {
-    content: "図 " counter(fig) " :";
+    content: "図 " counter(fig) " ";
   }
 }
 
@@ -47,7 +52,7 @@ caption,
   counter-increment: table;
 
   &:before {
-    content: "表 " counter(table) " :";
+    content: "表 " counter(table) " ";
   }
 }
 
@@ -55,7 +60,7 @@ caption,
   counter-increment: code;
 
   &:before {
-    content: "ソースコード " counter(code) " :";
+    content: "ソースコード " counter(code) " ";
   }
 }
 
@@ -63,6 +68,6 @@ caption,
   counter-increment: list;
 
   &:before {
-    content: "リスト " counter(list) " :";
+    content: "リスト " counter(list) " ";
   }
 }

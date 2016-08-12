@@ -1,6 +1,6 @@
 function rightAlign() {
     $("td").each(function() {
-        if(this.innerHTML.match(/^[0-9|.]+$/g) != null) {
+        if(this.innerHTML.match(/^[\+|\-|0-9|.]+$/g) != null) {
             this.style.textAlign = "right";
         }
     });
