@@ -118,6 +118,8 @@ gulp.task("jsconcat", () => {
         .pipe(gulp.dest(path.join(DEST_DIR, "scripts")));
 });
 
+gulp.task("compile", ["jade", "scss", "imagemin", "jsmin", "jsconcat"]);
+
 gulp.task("watch", () => {
     browserSync(BROWSER_SYNC_OPTIONS);
 
