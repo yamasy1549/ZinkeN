@@ -120,7 +120,7 @@ gulp.task("jsconcat", () => {
 
 gulp.task("compile", ["jade", "scss", "imagemin", "jsmin", "jsconcat"]);
 
-gulp.task("watch", () => {
+gulp.task("watch", ["compile"], () => {
     browserSync(BROWSER_SYNC_OPTIONS);
 
     gulp.watch([path.join(JADE_DIR, "**/*.jade")], ["jade", reload]);
