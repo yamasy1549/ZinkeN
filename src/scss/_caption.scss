@@ -17,6 +17,11 @@ caption,
   }
 }
 
+[class^=col-] + .caption,
+[class^=col-] + .figcaption {
+  margin-top: 0;
+}
+
 figcaption,
 .figcaption {
   counter-increment: fig;
