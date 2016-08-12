@@ -7,6 +7,7 @@ import gulp         from "gulp";
 import imagemin     from "gulp-imagemin";
 import jade         from "gulp-jade";
 import loadPlugins  from "gulp-load-plugins";
+import minimist     from "minimist";
 import path         from "path";
 import plumber      from "gulp-plumber";
 import pngquant     from "imagemin-pngquant";
@@ -25,6 +26,9 @@ const JADE_DIR    = path.join(SRC_DIR, "jade");
 const SCSS_DIR    = path.join(SRC_DIR, "scss");
 const IMAGES_DIR  = path.join(SRC_DIR, "images");
 const SCRIPTS_DIR = path.join(SRC_DIR, "scripts");
+
+var env = minimist(process.argv.slice(2));
+var port = env.p || 3000;
 
 require('jade').filters.code = function(block) {
     return block
@@ -62,6 +66,7 @@ const IMAGEMIN_OPTIONS = {
 
 const BROWSER_SYNC_OPTIONS = {
     server: [SRC_DIR, DEST_DIR],
+    port: port,
     open: false
 };
 
