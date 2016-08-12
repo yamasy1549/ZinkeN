@@ -117,6 +117,10 @@ html(lang="ja")
         section
           h3 ソースコード
           p ソースコードも書けます。一行が長い場合の折り返しが上手く行かないかもしれません、がんばります。
+          p
+            | また
+            code include ./_sieve.go
+            | のように書くことで外部からファイルを include できます。
           figure
             figcaption.list sieve.go
             pre
@@ -125,6 +129,33 @@ html(lang="ja")
             figcaption.code d_chain.d
             pre
               include ./_d_chain.d
+
+      section
+        h2 リスト
+        p
+          code ul ol
+          | を使って書けます。
+        table
+          caption リスト番号の指定方法
+          tr
+            th 指定方法
+            th list-style
+          tr
+            td: code ul
+            td ・（ブラウザ準拠）
+          tr
+            td: code ol
+            td 1. 2.（ブラウザ準拠）
+          tr
+            td: code ol.li-number
+            td (1) (2)
+          tr
+            td: code ul.noliststyle, ol.noliststyle
+            td 
+          tr
+            td
+              code .noliststyle > li.li-a, li.li-b
+            td (a) (b)
 
       section
         h2 数式
