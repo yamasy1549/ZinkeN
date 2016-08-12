@@ -1,11 +1,10 @@
 body {
-  counter-reset: h2 code table fig list page;
+  counter-reset: h2 h3 h4 h5 code table fig list page li-number;
 }
 
-// TODO: contentの部分がうまく書けたら@eachで書ける
 h2 {
   counter-increment: h2;
-  counter-reset: h3;
+  counter-reset: h3 h4 h5;
 
   &:before {
     content: counter(h2);
@@ -15,7 +14,7 @@ h2 {
 
 h3 {
   counter-increment: h3;
-  counter-reset: h4;
+  counter-reset: h4 h5;
 
   &:before {
     content: counter(h2) "." counter(h3);
@@ -52,4 +51,43 @@ h5 {
     content: "";
     margin: 0;
   }
+}
+
+ul.li-number,
+ol.li-number {
+  // TODO: mixinで指定したい
+  padding: 0;
+  counter-reset: li-number;
+
+  > li {
+    display: table;
+    list-style: none;
+    counter-increment: li-number;
+
+    &:before {
+      content: "("counter(li-number)")";
+      display: table-cell;
+      width: 30px;
+    }
+  }
+}
+
+.noliststyle {
+  list-style: none;
+
+  > li { display: table; }
+
+  [class^=li-]::before {
+    display: table-cell;
+    width: 30px;
+  }
+
+  .li-a::before { content: "(a)"; }
+  .li-b::before { content: "(b)"; }
+  .li-c::before { content: "(c)"; }
+  .li-d::before { content: "(d)"; }
+  .li-e::before { content: "(e)"; }
+  .li-f::before { content: "(f)"; }
+  .li-g::before { content: "(g)"; }
+  .li-h::before { content: "(h)"; }
 }
