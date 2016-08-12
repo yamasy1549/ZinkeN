@@ -1,4 +1,4 @@
-# ZinkeN v0.1.3
+# ZinkeN v0.1.4
 
 **TeXを捨てて人権を得たい**
 
@@ -20,6 +20,9 @@ npm install
 
 # src/ 内のファイル変更を検知して Jade や SCSS などを自動コンパイルします。
 gulp watch
+
+# 以下のようにしてportを指定することもできます。
+gulp watch -p 3333
 ```
 
 ```
