@@ -1,6 +1,6 @@
 {
   "name": "ZinkeN",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A template for reports",
   "main": "gulpfile.js",
   "dependencies": {},
