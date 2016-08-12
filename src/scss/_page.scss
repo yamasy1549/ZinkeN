@@ -3,6 +3,22 @@
   margin: $page-padding-top $page-padding-right $page-padding-bottom $page-padding-left;
 }
 
+.rotate {
+  position: relative;
+  padding-left: 10px;
+
+  img {
+    max-height: 280mm;
+    width: auto;
+  }
+
+  figcaption {
+    transform: rotate(90deg);
+    transform-origin: left;
+    position: absolute;
+  }
+}
+
 .page_break {
   page-break-before: always;
   page-break-after: always;
