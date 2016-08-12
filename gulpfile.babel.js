@@ -35,6 +35,12 @@ require('jade').filters.code = function(block) {
         .replace(/#/g, '&#35;')
 }
 
+require('jade').filters.no_space = function(block) {
+    return block
+        .replace(/\| (.*)$/gm, '$1')
+        .replace(/。\s/gm, '。')
+}
+
 const JADE_OPTIONS = {
     pretty: true,
     escapePre: true
