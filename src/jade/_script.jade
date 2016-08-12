@@ -6,8 +6,7 @@ mixin script
         MathJax.Hub.Register.StartupHook("Begin",function () {
           MathJax.Hub.Queue(
             ["Typeset", MathJax.Hub],
-            [rightAlign, tweakMathjax],
-            [checkElements, newPage]
+            [rightAlign, tweakMathjax]
           )
         });
       }
